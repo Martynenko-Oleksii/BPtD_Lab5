@@ -2,6 +2,7 @@
 {
     public class CallbackDto
     {
+        public const string PublicKey = "sandbox_i58842092314";
         public const string PrivateKey = "sandbox_0k35CLVG1cY819qjJD12Byv0Y7omKZFpEr1RgrAl";
 
         public string? Data { get; set; }

@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{handler?}"
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -10,10 +10,10 @@
             <form method="POST" accept-charset="utf-8" action="https://www.liqpay.ua/api/3/checkout">
                 <input type="hidden"
                        name="data"
-                       value="eyJ2ZXJzaW9uIjozLCJhY3Rpb24iOiJzdWJzY3JpYmUiLCJhbW91bnQiOiI0MCIsImN1cnJlbmN5IjoiVUFIIiwiZGVzY3JpcHRpb24iOiJQcmVtaXVtIiwicHVibGljX2tleSI6InNhbmRib3hfaTU4ODQyMDkyMzE0IiwibGFuZ3VhZ2UiOiJ1ayIsInN1YnNjcmliZSI6MSwic3Vic2NyaWJlX2RhdGVfc3RhcnQiOiJub3ciLCJzdWJzY3JpYmVfcGVyaW9kaWNpdHkiOiJtb250aCJ9" />
+                       value="@Model.Data" />
                 <input type="hidden"
                        name="signature"
-                       value="Mc+O9VGJ1luO6NJbU/9xVHD8PF0=" />
+                       value="@Model.Signature" />
                 <button style="border: none !important;
                                display:inline-block !important;
                                text-align: center !important;
@@ -36,15 +36,49 @@
             </form>
         </div>
     </div>
-    <div class="row justify-content-center">
-        <div class="col">
-            <span style="color: green;">@Model.Success</span>
+    <div class="row justify-content-center mt-5">
+        <div class="col-3">
+            <form method="POST" accept-charset="utf-8">
+                <input type="hidden"
+                       name="data"
+                       value="@Model.Data" />
+                <input type="hidden"
+                       name="signature"
+                       value="@Model.Signature" />
+                <button type="submit"
+                        style="border: none !important;
+                               display:inline-block !important;
+                               text-align: center !important;
+                               padding: 7px 20px !important;
+                               color: #fff !important;
+                               font-size:16px !important;
+                               font-weight: 600 !important;
+                               font-family:OpenSans, sans-serif;
+                               cursor: pointer !important;
+                               border-radius: 2px !important;
+                               background: rgba(122,43,255,1) !important;"
+                        onmouseover="this.style.opacity='0.5';"
+                        onmouseout="this.style.opacity='1';">
+                    <img src="https://static.liqpay.ua/buttons/logo-small.png"
+                         name="btn_text"
+                         style="margin-right: 7px !important;
+                                vertical-align: middle !important;" />
+                    <span style="vertical-align:middle; !important">Перевірка Callback'у'</span>
+                </button>
+            </form>
         </div>
-        <div class="col">
-            <span style="color: red;">@Model.Failure</span>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-2">
+            <span style="color: green;">@Model.Success</span>
         </div>
     </div>
     <div class="row justify-content-center">
+        <div class="col-2">
+            <span style="color: red;">@Model.Failure</span>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-3">
         <div class="col">
             <span>@Model.DataJson</span>
         </div>
