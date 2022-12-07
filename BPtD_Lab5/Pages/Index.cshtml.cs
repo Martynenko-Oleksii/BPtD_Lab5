@@ -21,6 +21,10 @@ namespace BPtD_Lab5.Pages
 
         public string description { get; set; }
 
+        public string server_url { get; set; }
+
+        public string result_url { get; set; }
+
         public string public_key { get; set; }
 
         public string language { get; set; }
@@ -55,6 +59,10 @@ namespace BPtD_Lab5.Pages
                 amount = "40",
                 currency = "UAH",
                 description = "Premium",
+
+                server_url = "https://aranod.kh.ua/api/callback",
+                result_url = "https://aranod.kh.ua",
+
                 public_key = CallbackDto.PublicKey,
                 language = "uk",
                 subscribe = 1,
